@@ -1,0 +1,38 @@
+.grid-container {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.grid-container .card {
+    display: grid;
+    border: 2px solid firebrick !important;
+    border-radius: 5px;
+    background-color: lightgrey;
+    padding: 5px;
+    row-gap: 5px;
+}
+
+label {
+    justify-self: center;
+}
+
+form {
+    display: grid;
+    row-gap: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.form-row > * {
+    justify-self: start;
+}
+
+.form-wrapper {
+    display: grid;
+    row-gap: 15px;
+}
