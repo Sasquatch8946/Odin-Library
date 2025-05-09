@@ -76,6 +76,9 @@ function createCard(book, gridContainer) {
     const readToggle = document.createElement("input");
     readToggle.setAttribute('type', 'checkbox');
     readToggle.classList.add('toggle-read');
+    if (book.status === 'read') {
+        readToggle.checked = true;
+    }
     const toggleLabel = document.createElement('label');
     toggleLabel.setAttribute('for', 'toggle-read');
     toggleLabel.innerText = 'Read?';
