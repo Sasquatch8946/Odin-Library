@@ -1,3 +1,22 @@
+class Book {
+    constructor(name, author, pages, status) {
+        this.id = crypto.randomUUID();
+        this.name  = name;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
+    toggleRead() {
+        if (this.status === "not read") {
+            this.status = "read";
+        } else {
+            this.status = "not read";
+        }
+
+    }
+}
+
 const theHobbit = new Book(
     "The Hobbit",
     "J.R.R. Tolkien",
@@ -26,21 +45,9 @@ closeButton.addEventListener("click", () => {
 
 let myLibrary = [theHobbit, foundation];
 
-function Book (name, author, pages, status) {
-    this.id = crypto.randomUUID();
-    this.name  = name;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
 
-Book.prototype.toggleRead = function() {
-    if (this.status === "not read") {
-        this.status = "read";
-    } else {
-        this.status = "not read";
-    }
-}
+
+
 
 function addBookToLibrary(name, author, pages, status) {
     const book = new Book(name, author, pages, status);
