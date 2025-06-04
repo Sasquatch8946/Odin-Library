@@ -103,16 +103,21 @@ function createCard(book, gridContainer) {
 const submitButton = document.querySelector('form');
 submitButton.addEventListener('submit', (event) =>{
     event.preventDefault();
-    const data = new FormData(event.target);
-    const details = [...data.entries()];
-    const book = addBookToLibrary(details[0][1], details[1][1], details[2][1], details[3][1]);
-    const inputs = document.querySelectorAll('form input');
-    inputs.forEach((input) => {
-        if (input.type != 'submit') {
-            input.value = "";
-        }
-    });
-    displayNewBook();
+    const isValid = validateForm();
+    if (isValid) {
+        const data = new FormData(event.target);
+        const details = [...data.entries()];
+        const book = addBookToLibrary(details[0][1], details[1][1], details[2][1], details[3][1]);
+        const inputs = document.querySelectorAll('form input');
+        inputs.forEach((input) => {
+            if (input.type != 'submit') {
+                input.value = "";
+            }
+        });
+        displayNewBook();
+    } else {
+        console.log("sadness");
+    }
 });
 
 displayBooks();
@@ -143,3 +148,27 @@ function invokeToggle(event) {
     book[0].toggleRead();
     event.target.previousSibling.previousSibling.previousSibling.innerText = `status: ${book[0].status}`;
 }
+
+const validateForm = function() {
+    let isValid = true;
+    const inputs = Array.from(document.querySelectorAll('form input'));
+    const textInputs = inputs.filter((i) => {
+        return i.type !== 'submit';
+    });
+
+    const breakException = {};
+
+    textInputs.forEach((ti) => {
+        console.log(ti.validity);
+        if (ti.validity.valueMissing) {
+            ti.setCustomValidity("URGHHHH");
+            ti.reportValidity();
+            isValid = false;
+            throw breakException;
+        }
+    });
+    
+    return isValid;
+}
+
+validateForm();

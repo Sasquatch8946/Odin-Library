@@ -12,22 +12,22 @@
     <br>
     <dialog>
         <div class="form-wrapper">
-            <form action="">
+            <form action="" novalidate>
                 <div class="form-row">
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text">
+                    <input id="name" name="name" type="text" pattern="[0-9]" required>
                 </div>
                 <div class="form-row">
                     <label for="author">Author</label>
-                    <input id="author" name="author" type="text">
+                    <input id="author" name="author" type="text" required>
                 </div>
                 <div class="form-row">
                     <label for="pages">Pages</label>
-                    <input id="pages" name="pages" type="text">
+                    <input id="pages" name="pages" type="text" required>
                 </div>
                 <div class="form-row">
                     <label for="status">Read?</label>
-                    <input id="status" name="status" type="text">
+                    <input id="status" name="status" type="text" required>
                 </div>
                 <input type="submit">
             </form>
