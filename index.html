@@ -15,7 +15,7 @@
             <form action="" novalidate>
                 <div class="form-row">
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text" pattern="[A-Za-z\,\'\-\s\.]+" required>
+                    <input id="name" name="name" type="text" pattern="[A-Za-z,'. \-]+" required>
                 </div>
                 <div class="form-row">
                     <label for="author">Author</label>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-row">
                     <label for="pages">Pages</label>
-                    <input id="pages" name="pages" type="text" pattern="[0-9]{1,4}" maxlength="4">
+                    <input id="pages" name="pages" type="text" pattern="[0-9]{1,4}" maxlength="4" required>
                 </div>
                 <div class="form-row">
                     <label for="status">Read?</label>

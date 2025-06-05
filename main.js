@@ -190,4 +190,3 @@ const validateTextInputs = function (textInputArray) {
 
 
 
-validateForm();
