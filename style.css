@@ -37,7 +37,8 @@ form {
     row-gap: 15px;
 }
 
-label:has(+ input:required):after {
+label:has(+ input:required):after, 
+label:has(+ select:required):after   {
     content: " *";
     color: red;
 }

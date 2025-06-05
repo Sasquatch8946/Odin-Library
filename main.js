@@ -149,6 +149,11 @@ function invokeToggle(event) {
     event.target.previousSibling.previousSibling.previousSibling.innerText = `status: ${book[0].status}`;
 }
 
+const showError = function(element, message) {
+    element.setCustomValidity(message);
+    element.reportValidity();
+}
+
 const validateForm = function() {
     let isValid = true;
     const inputs = Array.from(document.querySelectorAll('form input'));
@@ -156,19 +161,33 @@ const validateForm = function() {
         return i.type !== 'submit';
     });
 
-    const breakException = {};
+    isValid = validateTextInputs(textInputs);    
 
-    textInputs.forEach((ti) => {
-        console.log(ti.validity);
-        if (ti.validity.valueMissing) {
-            ti.setCustomValidity("URGHHHH");
-            ti.reportValidity();
-            isValid = false;
-            throw breakException;
-        }
-    });
-    
     return isValid;
 }
+
+const validateTextInputs = function (textInputArray) {
+    let isValid = true;
+    for (let i = 0; i < textInputArray.length; i++) {
+        if (textInputArray[i].validity.valueMissing) {
+            showError(textInputArray[i], "This field cannot be empty.");
+            isValid = false;
+            break;
+        } else if (textInputArray[i].validity.patternMismatch) {
+            showError(textInputArray[i], `You need to match the pattern for this field: ${textInputArray[i].pattern}.`);
+            isValid = false;
+            break;
+        } else if (textInputArray[i].validity.tooLong) {
+            showError(textInputArray[i], "Input is too long.");
+            isValid = false;
+            break;
+        } 
+
+    }
+
+    return isValid;
+}
+
+
 
 validateForm();

@@ -15,19 +15,22 @@
             <form action="" novalidate>
                 <div class="form-row">
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text" pattern="[0-9]" required>
+                    <input id="name" name="name" type="text" pattern="[A-Za-z\,\'\-\s\.]+" required>
                 </div>
                 <div class="form-row">
                     <label for="author">Author</label>
-                    <input id="author" name="author" type="text" required>
+                    <input id="author" name="author" type="text" pattern="[A-Za-z\.\s]+" required>
                 </div>
                 <div class="form-row">
                     <label for="pages">Pages</label>
-                    <input id="pages" name="pages" type="text" required>
+                    <input id="pages" name="pages" type="text" pattern="[0-9]{1,4}" maxlength="4">
                 </div>
                 <div class="form-row">
                     <label for="status">Read?</label>
-                    <input id="status" name="status" type="text" required>
+                    <select name="status" id="status" required>
+                        <option value="read">read</option>
+                        <option value="not read">not read</option>
+                    </select>
                 </div>
                 <input type="submit">
             </form>
